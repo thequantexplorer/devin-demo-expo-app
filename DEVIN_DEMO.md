@@ -34,6 +34,8 @@ Start a new session at [app.devin.ai](https://app.devin.ai) and paste this. Repl
 ```text
 Add a Shopping list screen to the Errands Expo app in https://github.com/<you>/devin-demo-expo-app.
 
+Follow the design skill in .agents/skills/design/SKILL.md. The result should look like a finished, polished product, not a default template.
+
 On the new screen, people can type an item and tap Add, tick an item off when it is bought, remove an item, and see how many items are left to buy. Link to it from the home screen. The tests in __tests__/shopping-list.test.tsx describe exactly what it must do and fail today. Make them pass without changing them.
 
 Then run the app on the web in Chrome and on the Android emulator. The skill in .agents/skills/run-web-and-android explains how. On both, open the shopping list, add Milk, Eggs and Bread, and tick off Milk. Open a PR with the test output and one screenshot from the web and one from Android in the description, and send me both screenshots here.
