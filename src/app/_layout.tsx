@@ -12,6 +12,7 @@ export default function RootLayout() {
         }}
       >
         <Stack.Screen name="index" options={{ title: 'Errands' }} />
+        <Stack.Screen name="shopping-list" options={{ title: 'Shopping list' }} />
         <Stack.Screen name="about" options={{ title: 'About' }} />
       </Stack>
       <StatusBar style="dark" />

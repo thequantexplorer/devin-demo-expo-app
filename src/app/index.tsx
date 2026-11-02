@@ -7,6 +7,11 @@ export default function HomeScreen() {
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.heading}>Good to see you</Text>
       <Text style={styles.subheading}>Pick something to do.</Text>
+      <NavCard
+        href="/shopping-list"
+        title="Shopping list"
+        description="Things to buy, ticked off as you go."
+      />
       <NavCard href="/about" title="About" description="What this app is and how it is built." />
     </ScrollView>
   );
