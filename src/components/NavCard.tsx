@@ -1,5 +1,8 @@
 import { Link, type Href } from 'expo-router';
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+
+import { focusRing, radius, space, type, usePalette, type InteractionState } from '../theme';
+import { ChevronIcon } from './Icons';
 
 type Props = {
   href: Href;
@@ -8,28 +11,52 @@ type Props = {
 };
 
 export function NavCard({ href, title, description }: Props) {
+  const palette = usePalette();
+
   return (
     <Link href={href} asChild>
-      <Pressable
-        accessibilityRole="link"
-        accessibilityLabel={title}
-        style={styles.card}
-      >
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>{description}</Text>
+      <Pressable accessibilityRole="link" accessibilityLabel={title} style={styles.pressable}>
+        {(state) => {
+          const { pressed, hovered, focused } = state as InteractionState;
+          return (
+            <View
+              style={[
+                styles.card,
+                {
+                  backgroundColor: pressed
+                    ? palette.surfacePressed
+                    : hovered
+                      ? palette.surfaceHover
+                      : palette.surface,
+                  borderColor: palette.hairline,
+                  transform: [{ scale: pressed ? 0.99 : 1 }],
+                },
+                focusRing(palette, focused),
+              ]}
+            >
+              <View style={styles.text}>
+                <Text style={[type.bodyStrong, { color: palette.text }]}>{title}</Text>
+                <Text style={[type.secondary, { color: palette.secondary }]}>{description}</Text>
+              </View>
+              <ChevronIcon color={palette.secondary} />
+            </View>
+          );
+        }}
       </Pressable>
     </Link>
   );
 }
 
 const styles = StyleSheet.create({
+  pressable: { borderRadius: radius.group },
   card: {
-    backgroundColor: '#ffffff',
-    borderColor: '#e5e7eb',
-    borderRadius: 12,
+    alignItems: 'center',
+    borderRadius: radius.group,
     borderWidth: 1,
-    padding: 16,
+    flexDirection: 'row',
+    gap: space(2),
+    paddingHorizontal: space(2.5),
+    paddingVertical: space(2),
   },
-  title: { color: '#111827', fontSize: 17, fontWeight: '600' },
-  description: { color: '#6b7280', fontSize: 14, marginTop: 4 },
+  text: { flex: 1, gap: 2 },
 });

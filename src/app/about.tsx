@@ -1,17 +1,29 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text } from 'react-native';
+
+import { contentWidth, space, type, usePalette } from '../theme';
 
 export default function AboutScreen() {
+  const palette = usePalette();
+  const body = [type.body, { color: palette.text }];
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.body}>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={body}>
         Errands is a small Expo app. The same TypeScript code runs on the web, Android and iOS.
       </Text>
-      <Text style={styles.body}>Each file in src/app is a screen.</Text>
-    </View>
+      <Text style={[type.secondary, { color: palette.secondary }]}>
+        Each file in src/app is a screen.
+      </Text>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { gap: 12, padding: 20 },
-  body: { color: '#374151', fontSize: 16, lineHeight: 24 },
+  container: {
+    alignSelf: 'center',
+    gap: space(1.5),
+    maxWidth: contentWidth,
+    padding: space(3),
+    width: '100%',
+  },
 });
