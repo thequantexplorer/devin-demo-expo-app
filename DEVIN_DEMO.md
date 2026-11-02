@@ -34,7 +34,7 @@ Start a new session at [app.devin.ai](https://app.devin.ai) and paste this. Repl
 ```text
 Add a Shopping list screen to the Errands Expo app in https://github.com/<you>/devin-demo-expo-app.
 
-Follow the design skill in .agents/skills/design/SKILL.md. The result should look like a finished, polished product, not a default template.
+Follow the repo's design skill. The result should look like a finished, polished product.
 
 On the new screen, people can type an item and tap Add, tick an item off when it is bought, remove an item, and see how many items are left to buy. Link to it from the home screen. The tests in __tests__/shopping-list.test.tsx describe exactly what it must do and fail today. Make them pass without changing them.
 
